@@ -1,0 +1,27 @@
+    Checking tauri-app v0.1.0 (C:\H-ASSASSIN\Codeing\Electron Projects\PDFusion\src-tauri)
+error[E0599]: the method `to_string` exists for reference `&[u8]`, but its trait bounds were not satisfied
+   --> src\pdf.rs:122:32
+    |
+122 |                     .map(|s| s.to_string());
+    |                                ^^^^^^^^^ method cannot be called on `&[u8]` due to unsatisfied trait bounds
+    |
+    = note: the following trait bounds were not satisfied:
+            `[u8]: std::fmt::Display`
+            which is required by `[u8]: ToString`
+            `&[u8]: std::fmt::Display`
+            which is required by `&[u8]: ToString`
+
+error[E0599]: the method `to_string` exists for reference `&[u8]`, but its trait bounds were not satisfied
+   --> src\pdf.rs:126:32
+    |
+126 |                     .map(|s| s.to_string());
+    |                                ^^^^^^^^^ method cannot be called on `&[u8]` due to unsatisfied trait bounds
+    |
+    = note: the following trait bounds were not satisfied:
+            `[u8]: std::fmt::Display`
+            which is required by `[u8]: ToString`
+            `&[u8]: std::fmt::Display`
+            which is required by `&[u8]: ToString`
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `tauri-app` (lib) due to 2 previous errors

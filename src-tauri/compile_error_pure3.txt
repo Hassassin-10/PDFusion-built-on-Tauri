@@ -1,0 +1,2 @@
+    Checking tauri-app v0.1.0 (C:\H-ASSASSIN\Codeing\Electron Projects\PDFusion\src-tauri)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.66s

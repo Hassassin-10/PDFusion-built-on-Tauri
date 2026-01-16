@@ -1,0 +1,106 @@
+    Checking tauri-app v0.1.0 (C:\H-ASSASSIN\Codeing\Electron Projects\PDFusion\src-tauri)
+error[E0599]: no method named `append` found for struct `lopdf::Document` in the current scope
+  --> src\pdf.rs:21:13
+   |
+21 |         doc.append(&mut next);
+   |             ^^^^^^ method not found in `lopdf::Document`
+   |
+help: some of the expressions' fields have a method of the same name
+   |
+21 |         doc.bookmarks.append(&mut next);
+   |             ++++++++++
+21 |         doc.objects.append(&mut next);
+   |             ++++++++
+21 |         doc.reference_table.entries.append(&mut next);
+   |             ++++++++++++++++++++++++
+
+error[E0599]: no method named `insert_page` found for struct `lopdf::Document` in the current scope
+   --> src\pdf.rs:39:17
+    |
+ 39 |         new_doc.insert_page(1, doc.get_object(object_id).unwrap().clone());
+    |                 ^^^^^^^^^^^
+    |
+help: there is a method `insert_image` with a similar name, but with different arguments
+   --> C:\Users\hassa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\lopdf-0.32.0\src\parser_aux.rs:145:5
+    |
+145 | /     pub fn insert_image(
+146 | |         &mut self, page_id: ObjectId, img_object: Stream, position: (f32, f32), size: (f32, f32),
+147 | |     ) -> Result<()> {
+    | |___________________^
+
+error[E0308]: mismatched types
+   --> src\pdf.rs:100:12
+    |
+100 |     if let Some(info_obj) = doc.trailer.get(b"Info") {
+    |            ^^^^^^^^^^^^^^   ------------------------ this expression has type `Result<&lopdf::Object, lopdf::Error>`
+    |            |
+    |            expected `Result<&Object, Error>`, found `Option<_>`
+    |
+    = note: expected enum `Result<&lopdf::Object, lopdf::Error>`
+               found enum `std::option::Option<_>`
+
+error[E0614]: type `(u32, u16)` cannot be dereferenced
+   --> src\pdf.rs:103:61
+    |
+103 |              lopdf::Object::Reference(id) => doc.get_object(*id).ok(),
+    |                                                             ^^^ can't be dereferenced
+
+error[E0282]: type annotations needed
+   --> src\pdf.rs:108:32
+    |
+108 |              if let Ok(dict) = obj.as_dict() {
+    |                                ^^^ cannot infer type
+
+error[E0282]: type annotations needed
+   --> src\pdf.rs:109:25
+    |
+109 |                 title = dict.get(b"Title")
+    |                         ^^^^ cannot infer type
+
+error[E0282]: type annotations needed
+   --> src\pdf.rs:110:32
+    |
+110 |                     .and_then(|v| v.as_str().ok())
+    |                                ^  - type must be known at this point
+    |
+help: consider giving this closure parameter an explicit type
+    |
+110 |                     .and_then(|v: /* Type */| v.as_str().ok())
+    |                                 ++++++++++++
+
+error[E0282]: type annotations needed
+   --> src\pdf.rs:111:27
+    |
+111 |                     .map(|s| s.to_string());
+    |                           ^  - type must be known at this point
+    |
+help: consider giving this closure parameter an explicit type
+    |
+111 |                     .map(|s: /* Type */| s.to_string());
+    |                            ++++++++++++
+
+error[E0282]: type annotations needed
+   --> src\pdf.rs:113:32
+    |
+113 |                     .and_then(|v| v.as_str().ok())
+    |                                ^  - type must be known at this point
+    |
+help: consider giving this closure parameter an explicit type
+    |
+113 |                     .and_then(|v: /* Type */| v.as_str().ok())
+    |                                 ++++++++++++
+
+error[E0282]: type annotations needed
+   --> src\pdf.rs:114:27
+    |
+114 |                     .map(|s| s.to_string());
+    |                           ^  - type must be known at this point
+    |
+help: consider giving this closure parameter an explicit type
+    |
+114 |                     .map(|s: /* Type */| s.to_string());
+    |                            ++++++++++++
+
+Some errors have detailed explanations: E0282, E0308, E0599, E0614.
+For more information about an error, try `rustc --explain E0282`.
+error: could not compile `tauri-app` (lib) due to 10 previous errors

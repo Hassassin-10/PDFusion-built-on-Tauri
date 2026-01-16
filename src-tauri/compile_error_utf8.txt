@@ -1,0 +1,196 @@
+﻿cargo :     Checking tauri-app v0.1.0 
+(C:\H-ASSASSIN\Codeing\Electron 
+Projects\PDFusion\src-tauri)
+At line:1 char:1
++ cargo check > compile_error.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotS    
+pecified: (    Checking ta...s    
+ion\src-tauri):String) [], Rem    
+oteException
+    + FullyQualifiedErrorId : Nati    
+veCommandError
+ 
+warning: unused imports: 
+`Dictionary`, `ObjectId`, and `Stream`
+ --> src\lib.rs:1:31
+  |
+1 | use lopdf::{Document, Object, 
+ObjectId, Dictionary, Stream};
+  |                               
+^^^^^^^^  ^^^^^^^^^^  ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` 
+(part of `#[warn(unused)]`) on by 
+default
+
+warning: unused import: 
+`std::collections::BTreeMap`
+ --> src\lib.rs:2:5
+  |
+2 | use std::collections::BTreeMap;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> src\lib.rs:77:29
+   |
+77 |             .and_then(|obj| 
+obj.as_reference().ok())
+   |                             
+^^^^^^^^^^^^^^^^^^^^^^^ expected 
+`Result<_, Error>`, found 
+`Option<(u32, u16)>`
+   |
+   = note: expected enum `Result<_, 
+lopdf::Error>`
+              found enum 
+`Option<(u32, u16)>`
+help: try wrapping the expression in 
+`Ok`
+   |
+77 |             .and_then(|obj| 
+Ok(obj.as_reference().ok()))
+   |                             +++  
+                     +
+
+error[E0599]: no method named `ok_or` 
+found for enum `Result<T, E>` in the 
+current scope
+  --> src\lib.rs:78:14
+   |
+76 |           let catalog_id = 
+base_doc.trailer.get(b"Root")
+   |  __________________________-
+77 | |             .and_then(|obj| 
+obj.as_reference().ok())
+78 | |             .ok_or("Base doc 
+missing Root")?;
+   | |             -^^^^^ method not 
+found in `Result<_, lopdf::Error>`
+   | |_____________|
+   |
+
+error[E0308]: mismatched types
+  --> src\lib.rs:87:29
+   |
+87 |             .and_then(|obj| 
+obj.as_reference().ok())
+   |                             
+^^^^^^^^^^^^^^^^^^^^^^^ expected 
+`Result<_, Error>`, found 
+`Option<(u32, u16)>`
+   |
+   = note: expected enum `Result<_, 
+lopdf::Error>`
+              found enum 
+`Option<(u32, u16)>`
+help: try wrapping the expression in 
+`Ok`
+   |
+87 |             .and_then(|obj| 
+Ok(obj.as_reference().ok()))
+   |                             +++  
+                     +
+
+error[E0599]: no method named `ok_or` 
+found for enum `Result<T, E>` in the 
+current scope
+  --> src\lib.rs:88:14
+   |
+86 |           let pages_id = 
+catalog.get(b"Pages")
+   |  ________________________-
+87 | |             .and_then(|obj| 
+obj.as_reference().ok())
+88 | |             .ok_or("Pages 
+missing in Catalog")?;
+   | |             -^^^^^ method not 
+found in `Result<_, lopdf::Error>`
+   | |_____________|
+   |
+
+error[E0308]: mismatched types
+  --> src\lib.rs:97:29
+   |
+97 |             .and_then(|obj| 
+obj.as_array_mut().ok())
+   |                             
+^^^^^^^^^^^^^^^^^^^^^^^ expected 
+`Result<_, Error>`, found 
+`Option<&mut Vec<Object>>`
+   |
+   = note: expected enum `Result<_, 
+lopdf::Error>`
+              found enum `Option<&mut 
+Vec<lopdf::Object>>`
+help: try wrapping the expression in 
+`Ok`
+   |
+97 |             .and_then(|obj| 
+Ok(obj.as_array_mut().ok()))
+   |                             +++  
+                     +
+
+error[E0599]: no method named `ok_or` 
+found for enum `Result<T, E>` in the 
+current scope
+  --> src\lib.rs:98:14
+   |
+96 |           let kids = 
+pages_obj.get_mut(b"Kids")
+   |  ____________________-
+97 | |             .and_then(|obj| 
+obj.as_array_mut().ok())
+98 | |             .ok_or("Kids 
+missing in Pages")?;
+   | |             -^^^^^ method not 
+found in `Result<_, lopdf::Error>`
+   | |_____________|
+   |
+
+error[E0599]: no method named 
+`as_i64_mut` found for mutable 
+reference `&mut lopdf::Object` in the 
+current scope
+   --> src\lib.rs:107:33
+    |
+107 |             .and_then(|obj| 
+obj.as_i64_mut().ok())
+    |                                 
+^^^^^^^^^^
+    |
+help: there is a method `as_i64` with 
+a similar name
+    |
+107 -             .and_then(|obj| 
+obj.as_i64_mut().ok())
+107 +             .and_then(|obj| 
+obj.as_i64().ok())
+    |
+
+error[E0599]: no method named `ok_or` 
+found for enum `Result<T, E>` in the 
+current scope
+   --> src\lib.rs:108:14
+    |
+106 |           let count = 
+pages_obj.get_mut(b"Count")
+    |  _____________________-
+107 | |             .and_then(|obj| 
+obj.as_i64_mut().ok())
+108 | |             .ok_or("Count 
+missing in Pages")?;
+    | |             -^^^^^ method not 
+found in `Result<_, lopdf::Error>`
+    | |_____________|
+    |
+
+Some errors have detailed 
+explanations: E0308, E0599.
+For more information about an error, 
+try `rustc --explain E0308`.
+warning: `tauri-app` (lib) generated 
+2 warnings
+error: could not compile `tauri-app` 
+(lib) due to 8 previous errors; 2 
+warnings emitted

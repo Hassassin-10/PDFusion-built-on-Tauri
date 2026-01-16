@@ -1,0 +1,60 @@
+    Checking tauri-app v0.1.0 (C:\H-ASSASSIN\Codeing\Electron Projects\PDFusion\src-tauri)
+warning: unused imports: `Dictionary`, `ObjectId`, and `Stream`
+ --> src\lib.rs:1:31
+  |
+1 | use lopdf::{Document, Object, ObjectId, Dictionary, Stream};
+  |                               ^^^^^^^^  ^^^^^^^^^^  ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `std::collections::BTreeMap`
+ --> src\lib.rs:2:5
+  |
+2 | use std::collections::BTreeMap;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0599]: no method named `ok_or` found for enum `Result<T, E>` in the current scope
+  --> src\lib.rs:79:14
+   |
+78 |           let root_id = base_doc.trailer.get(b"Root")
+   |  _______________________-
+79 | |             .ok_or("Base doc missing Root")?
+   | |             -^^^^^ method not found in `Result<&lopdf::Object, lopdf::Error>`
+   | |_____________|
+   |
+
+error[E0599]: no method named `ok_or` found for enum `Result<T, E>` in the current scope
+  --> src\lib.rs:88:18
+   |
+87 | /              catalog.get(b"Pages")
+88 | |                 .ok_or("Pages key missing")?
+   | |                 -^^^^^ method not found in `Result<&lopdf::Object, lopdf::Error>`
+   | |_________________|
+   |
+
+error[E0308]: mismatched types
+  --> src\lib.rs:98:16
+   |
+98 |         if let Some(Object::Array(ref mut kids)) = pages_dict.get_mut(b"Kids") {
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   --------------------------- this expression has type `Result<&mut lopdf::Object, lopdf::Error>`
+   |                |
+   |                expected `Result<&mut Object, Error>`, found `Option<_>`
+   |
+   = note: expected enum `Result<&mut lopdf::Object, lopdf::Error>`
+              found enum `Option<_>`
+
+error[E0308]: mismatched types
+   --> src\lib.rs:107:16
+    |
+107 |         if let Some(Object::Integer(ref mut count)) = pages_dict.get_mut(b"Count") {
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------------------- this expression has type `Result<&mut lopdf::Object, lopdf::Error>`
+    |                |
+    |                expected `Result<&mut Object, Error>`, found `Option<_>`
+    |
+    = note: expected enum `Result<&mut lopdf::Object, lopdf::Error>`
+               found enum `Option<_>`
+
+Some errors have detailed explanations: E0308, E0599.
+For more information about an error, try `rustc --explain E0308`.
+warning: `tauri-app` (lib) generated 2 warnings
+error: could not compile `tauri-app` (lib) due to 4 previous errors; 2 warnings emitted

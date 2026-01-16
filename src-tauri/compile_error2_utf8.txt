@@ -1,0 +1,16 @@
+﻿cargo :     Checking tauri-app 
+v0.1.0 
+(C:\H-ASSASSIN\Codeing\Electron 
+Projects\PDFusion\src-tauri)
+At line:1 char:1
++ cargo check > compile_error2.txt 
+2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~
+    + CategoryInfo          : No   
+ tSpecified: (    Checking ta    
+...sion\src-tauri):String) [    ], 
+RemoteException
+    + FullyQualifiedErrorId : Na   
+ tiveCommandError
+ 

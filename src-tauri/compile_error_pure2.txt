@@ -1,0 +1,20 @@
+    Checking tauri-app v0.1.0 (C:\H-ASSASSIN\Codeing\Electron Projects\PDFusion\src-tauri)
+error[E0382]: borrow of partially moved value: `doc`
+  --> src\pdf.rs:44:21
+   |
+39 |         for (id, object) in doc.objects {
+   |                             ----------- `doc.objects` partially moved due to this implicit call to `.into_iter()`
+...
+44 |         let pages = doc.get_pages();
+   |                     ^^^ value borrowed here after partial move
+   |
+note: `into_iter` takes ownership of the receiver `self`, which moves `doc.objects`
+  --> /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234\library\core\src\iter\traits\collect.rs:310:18
+   = note: partial move occurs because `doc.objects` has type `BTreeMap<(u32, u16), lopdf::Object>`, which does not implement the `Copy` trait
+help: consider iterating over a slice of the `BTreeMap<(u32, u16), lopdf::Object>`'s content to avoid moving into the `for` loop
+   |
+39 |         for (id, object) in &doc.objects {
+   |                             +
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `tauri-app` (lib) due to 1 previous error

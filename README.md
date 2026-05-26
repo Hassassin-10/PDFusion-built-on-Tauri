@@ -1,6 +1,6 @@
 # PDFusion ⚡📄
 
-**PDFusion** is a modern, high-performance desktop PDF toolkit built with **Tauri**, **React**, and **Rust**. It features a premium "Glassmorphism" UI with dark mode, smooth animations, and a secure, offline-first architecture.
+**PDFusion** is a modern, high-performance desktop PDF toolkit built with **Tauri**, **React**, and **Rust**. It features a premium "Glassmorphism" UI with dark mode, smooth animations, and a secure, offline-first architecture.. 
 
 ![PDFusion Dashboard](./public/dash.png)
 
